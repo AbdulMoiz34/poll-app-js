@@ -49,6 +49,7 @@ const displayPoll = () => {
 }
 
 const displayPollsOptions = () => {
+    console.log("displayPollsOptions called.")
     const options = findPollById().options;
     options.forEach(option => {
         optionsContainer.innerHTML += `
@@ -62,6 +63,7 @@ const displayPollsOptions = () => {
 }
 
 const pollResult = () => {
+    console.log("pollResult called.")
     const poll = findPollById();
     const pollResultsContainer = document.getElementById("poll-results-container");
     pollResultsContainer.innerHTML = "";
@@ -73,7 +75,7 @@ const pollResult = () => {
                                     <div class="flex justify-between">
                                         <p class="font-semibold text-blue-500">${option}</p>
                                         <div class="space-x-2">
-                                            <span class="text-gray-600 text-sm">${voteCount} vote</span>
+                                            <span class="text-gray-600 text-sm">${voteCount > 1 ? voteCount + " votes" : voteCount + " vote"}</span>
                                             <span
                                                 class="text-blue-600 font-semibold px-2 py-1 bg-blue-100 text-sm rounded">${votePercentage}%</span>
                                         </div>
