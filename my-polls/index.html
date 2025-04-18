@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polls</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- NOTYF CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <main id="root" class="min-h-screen w-full flex justify-center items-center main-container py-4">
+        <div
+            class="mx-4 shadow-md p-4 sm:p-6 md:p-8 bg-white rounded-lg card-container max-w-5xl w-full flex flex-col gap-6">
+            <div class="flex flex-col gap-4 items-start justify-between md:flex-row md:items-center mb-4">
+                <div>
+                    <div class="text-blue-500 text-3xl font-bold">My Polls</div>
+                    <p class="text-gray-500">Manage and view results for your polls.</p>
+                </div>
+                <div>
+                    <a href="../create-poll/index.html"
+                        class="duration-150 px-4 py-2 rounded-lg bg-blue-500 hover:bg-blue-600 text-white">Create
+                        Poll</a>
+                    <a href="../polls/index.html"
+                        class="px-4 py-2 rounded-lg bg-green-500 hover:bg-green-600 text-white mx-1">All
+                        Polls</a>
+                    <a href="../home/index.html"
+                        class="bg-gradient-to-tr from-gray-300 to-white hover:bg-gradient-to-tl transition-all duration-150 px-4 py-2 rounded-sm">Home</a>
+                </div>
+            </div>
+
+            <div id="polls-container">
+
+            </div>
+        </div>
+    </main>
+    <!-- NOTYF JS -->
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

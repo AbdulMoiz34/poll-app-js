@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poll App</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="../style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./style.css">
+    <!-- Notyf CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+    <!-- Notyf JS -->
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+</head>
+
+<body>
+    <main id="root" class="min-h-screen w-full flex justify-center items-center main-container py-4">
+        <div class="mx-4 shadow-md p-4 sm:p-6 md:p-8 bg-white rounded-lg card-container max-w-5xl w-full">
+            <div class="header text-center mb-6">
+                <h1 class="text-2xl sm:text-3xl font-bold">Welcome, <span
+                        class="text-blue-500 username-display" id="username-display">Ahmed</span><span>!</span></h1>
+                <p class="text-gray-700 mt-2">What would you like to do today?</p>
+            </div>
+            <div class="mt-8 flex flex-col md:flex-row gap-6 sm:gap-4 flex-wrap">
+                <div
+                    class="card card-blue w-full sm:min-w-64 md:w-0 bg-gradient-to-br from-blue-50 to-white border border-gray-100 flex-1 px-6 py-6 shadow-md rounded-lg flex gap-3 flex-col items-center mb-4 md:mb-0">
+                    <div class="icon-container bg-blue-100 p-4 rounded-full w-16 h-16 flex justify-center items-center">
+                        <i class="fa-regular fa-clipboard text-blue-500 text-3xl"></i>
+                    </div>
+                    <div class="card-content w-full text-center">
+                        <p class="text-lg font-medium mt-2">Browse Polls</p>
+                        <p class="text-gray-500 text-sm card-description">View and vote on all polls</p>
+                        <a href="../polls/index.html"
+                            class="btn-effect text-center inline-block bg-blue-500 text-white px-4 py-3 rounded-md cursor-pointer hover:bg-blue-600 w-full text-sm font-semibold transition-all duration-300 mt-auto">View
+                            Polls</a>
+                    </div>
+                </div>
+                <div
+                    class="card card-green w-full sm:min-w-64 md:w-0 bg-gradient-to-br from-green-50 to-white border border-gray-100 flex-1 px-6 py-6 shadow-md rounded-lg flex gap-3 flex-col items-center mb-4 md:mb-0">
+                    <div
+                        class="icon-container bg-green-100 p-4 rounded-full w-16 h-16 flex justify-center items-center">
+                        <i class="fa-regular fa-user text-green-500 text-3xl"></i>
+                    </div>
+                    <div class="card-content w-full text-center">
+                        <p class="text-lg font-medium mt-2">My Polls</p>
+                        <p class="text-gray-500 text-sm card-description">Manage your created polls</p>
+                        <a href="../my-polls/index.html"
+                            class="btn-effect text-center inline-block bg-green-500 text-white px-4 py-3 rounded-md cursor-pointer hover:bg-green-600 w-full text-sm font-semibold transition-all duration-300 mt-auto">My
+                            Polls</a>
+                    </div>
+                </div>
+                <div
+                    class="card card-purple w-full sm:min-w-64 md:w-0 bg-gradient-to-br from-purple-50 to-white border border-gray-100 flex-1 px-6 py-6 shadow-md rounded-lg flex gap-3 flex-col items-center mb-4 md:mb-0">
+                    <div
+                        class="icon-container bg-purple-100 p-4 rounded-full w-16 h-16 flex justify-center items-center">
+                        <i class="fa-solid fa-plus text-purple-600 text-2xl"></i>
+                    </div>
+                    <div class="card-content w-full text-center">
+                        <p class="text-lg font-medium mt-2">Create Poll</p>
+                        <p class="text-gray-500 text-sm card-description">Create a new interactive poll</p>
+                        <a href="../create-poll/index.html"
+                            class="btn-effect text-center inline-block bg-purple-500 text-white px-4 py-3 rounded-md cursor-pointer hover:bg-purple-600 w-full text-sm font-semibold transition-all duration-300 mt-auto">Create
+                            New Poll</a>
+                    </div>
+                </div>
+            </div>
+            <div class="my-8 w-full h-[1px] bg-gray-100"></div>
+            <div class="flex justify-center items-center">
+                <button id="logout-btn"
+                    class="btn-effect text-center inline-block bg-red-500 text-white px-6 py-3 rounded-md cursor-pointer hover:bg-red-600 text-sm font-semibold transition-all duration-300"><i
+                        class="fas fa-sign-out-alt mr-2"></i>Logout</button>
+            </div>
+        </div>
+    </main>
+    <script src="app.js"></script>
+</body>
+
+</html>

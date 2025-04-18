@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poll App</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main id="root" class="h-screen w-screen flex justify-center items-center">
+        <div class="mx-4 shadow-sm p-4 sm:p-6 md:p-12 bg-white rounded-md">
+            <div class="header text-center">
+                <h1 class="text-4xl font-bold"><span class="text-blue-500">Poll</span><span>ify</span></h1>
+                <p class="text-gray-700 mt-2">Create interactive polls, gather opinions, and visualize results in
+                    real-time.</p>
+            </div>
+            <div class="flex flex-col md:flex-row gap-4 mt-8">
+                <div class="flex-1 border-1 border-gray-200 p-6 rounded-xl">
+                    <div class="text-xl font-semibold">Create Custom Polls</div>
+                    <p class="text-sm text-gray-600">Design polls with multiple options. Share them with friends or
+                        colleagues.</p>
+                    <div class="mt-4 text-gray-500">
+                        <p><span class="text-green-500 mr-1">✓</span> Create unlimited polls</p>
+                        <p><span class="text-green-500 mr-1">✓</span> Add multiple options</p>
+                        <p><span class="text-green-500 mr-1">✓</span> View detailed results</p>
+                    </div>
+                </div>
+                <div class="flex-1 border-1 border-gray-200 p-6 rounded-xl">
+                    <div class="text-xl font-semibold mb-2">Get Started Now</div>
+                    <a href="./authentication/login/index.html"
+                        class="text-center inline-block bg-blue-500 text-white px-4 py-2 rounded-md cursor-pointer hover:bg-blue-600 w-full font-semibold">Login</a>
+                    <a href="./authentication/signUp/index.html"
+                        class="text-center inline-block text-white bg-green-500 px-4 py-2 rounded-md cursor-pointer hover:bg-green-600 w-full mt-2  font-semibold">Register</a>
+                    <p class="text-sm text-gray-500 mt-2">Simple and secure. No credit card required.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="./handler.js"></script>
+</body>
+
+</html>
