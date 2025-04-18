@@ -2,7 +2,6 @@ const polls = JSON.parse(localStorage.getItem("polls")) || [];
 const optionsContainer = document.getElementById("poll-options");
 const submitVoteBtn = document.getElementById("submit-vote-btn");
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-const notyf = new Notyf();
 const pollVotes = document.getElementById("poll-votes");
 const pollResults = document.getElementById("poll-results");
 let pollIdx = undefined;
@@ -49,7 +48,6 @@ const displayPoll = () => {
 }
 
 const displayPollsOptions = () => {
-    console.log("displayPollsOptions called.")
     const options = findPollById().options;
     options.forEach(option => {
         optionsContainer.innerHTML += `
@@ -63,7 +61,6 @@ const displayPollsOptions = () => {
 }
 
 const pollResult = () => {
-    console.log("pollResult called.")
     const poll = findPollById();
     const pollResultsContainer = document.getElementById("poll-results-container");
     pollResultsContainer.innerHTML = "";
