@@ -60,7 +60,7 @@ searchPolls.addEventListener("input", () => {
 const main = () => {
     polls.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     if (!polls.length) {
-        pollsContainer.innerHTML = `No Polls Found.`;
+        pollsContainer.innerHTML = `<p class="text-center text-gray-500 mt-4">No polls found.</p>`;
         return;
     }
     displayPolls(polls);
