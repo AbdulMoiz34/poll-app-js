@@ -2,9 +2,13 @@ const pollsContainer = document.querySelector(".polls-container");
 const polls = JSON.parse(localStorage.getItem("polls")) || [];
 const searchPolls = document.getElementById("search-polls");
 
+const time = (time) => {
+    return time.slice(0, 4) + time.slice(4 + 3);
+}
+
 const formatLongDateUTC = dateStr => {
     const date = new Date(dateStr);
-    return date.toDateString() + " at " + date.toLocaleTimeString();
+    return date.toDateString() + " at " + time(date.toLocaleTimeString());
 }
 
 const displayPolls = (polls) => {

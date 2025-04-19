@@ -11,9 +11,13 @@ const getPollId = () => {
     return params.get("pollId");
 }
 
+const time = (time) => {
+    return time.slice(0, 4) + time.slice(4 + 3);
+}
+
 const formatLongDateUTC = dateStr => {
     const date = new Date(dateStr);
-    return date.toDateString() + " at " + date.toLocaleTimeString();
+    return date.toDateString() + " at " + time(date.toLocaleTimeString());
 }
 
 const findPollById = () => {
@@ -108,6 +112,12 @@ const submitVote = () => {
     pollVotes.classList.add("hidden");
     pollResult();
 }
+
+// Back Button.
+const backBtn = document.getElementById("back-btn");
+backBtn.addEventListener("click", () => {
+    window.history.back();
+});
 
 submitVoteBtn.addEventListener("click", submitVote);
 displayPoll();
