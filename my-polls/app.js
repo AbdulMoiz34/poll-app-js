@@ -146,10 +146,8 @@ const updatePoll = (idx) => {
     const optionsInp = document.querySelectorAll("#poll-options-container input");
     const options = [...optionsInp].map(inp => inp.value.trim());
     const poll = pollsfromLS[idx];
-    debugger;
     pollsfromLS[idx] = { ...poll, title, description, options: options, votes: [] };
     console.log(pollsfromLS[idx]);
-    debugger;
     localStorage.setItem("polls", JSON.stringify(pollsfromLS));
     console.log(options);
     location.reload();
