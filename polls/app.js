@@ -12,11 +12,6 @@ const formatLongDateUTC = dateStr => {
 }
 
 const displayPolls = (polls) => {
-    pollsContainer.innerHTML = "";
-    if(polls.length === 0){
-        pollsContainer.innerHTML = `<p class="text-center text-gray-500 mt-4">No polls found</p>`;
-        return;
-    }
     for (let poll of polls) {
         pollsContainer.innerHTML += `<div class="mx-auto bg-white p-6 rounded-xl shadow-sm border border-gray-200 mt-4">
     <h2 class="text-xl font-semibold text-gray-800">${poll.title}</h2>
@@ -43,8 +38,6 @@ const displayPolls = (polls) => {
     }
 }
 
-displayPolls(polls);
-
 const searchPollsHandler = () => {
     const searchTerm = searchPolls.value.trim().toLowerCase();
     const filteredPolls = polls.filter(poll =>
@@ -62,3 +55,15 @@ searchPolls.addEventListener("input", () => {
         displayPolls(searchPollsHandler());
     }, 1000);
 });
+
+
+const main = () => {
+    polls.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    if (!polls.length) {
+        pollsContainer.innerHTML = `No Polls Found.`;
+        return;
+    }
+    displayPolls(polls);
+}
+
+main();

@@ -19,6 +19,7 @@ const formatLongDateUTC = dateStr => {
 }
 
 const polls = userPolls();
+polls.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 const displayPolls = () => {
     polls.forEach(poll =>
         pollsContainer.innerHTML += `<div class="mx-auto bg-white p-6 rounded-xl shadow-sm border border-gray-200 mt-4">
