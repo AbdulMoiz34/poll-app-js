@@ -96,8 +96,7 @@ const editPoll = (id) => {
     });
     title.value = poll.title;
     description.value = poll.description;
-    console.log(poll);
-    console.log(pollIdx);
+    pollOptionsContainer.innerHTML = "";
     addOption();
     addOption();
     modal.addEventListener("submit", () => updatePoll(pollIdx));
@@ -139,7 +138,6 @@ const deleteOption = (btn) => {
 }
 
 const updatePoll = (idx) => {
-    console.log(idx);
     event.preventDefault();
     const title = document.querySelector(".modal #title").value;
     const description = document.querySelector(".modal #description").value;
@@ -147,9 +145,7 @@ const updatePoll = (idx) => {
     const options = [...optionsInp].map(inp => inp.value.trim());
     const poll = pollsfromLS[idx];
     pollsfromLS[idx] = { ...poll, title, description, options: options, votes: [] };
-    console.log(pollsfromLS[idx]);
     localStorage.setItem("polls", JSON.stringify(pollsfromLS));
-    console.log(options);
     location.reload();
 }
 
