@@ -1,7 +1,9 @@
 const currentUserId = JSON.parse(localStorage.getItem("currentUser")).id;
 const pollsContainer = document.getElementById("polls-container");
 const pollsfromLS = JSON.parse(localStorage.getItem("polls")) || [];
-
+const notyf = new Notyf();
+const addOptionBtn = document.getElementById("add-option-btn");
+const modal = document.querySelector(".modal");
 
 const userPolls = () => {
     return pollsfromLS.filter(poll => poll.createdBy == currentUserId);
@@ -26,7 +28,7 @@ const displayPolls = () => {
              <p class="text-gray-600 mt-1">${poll.description}</p>
           </div>
           <div class="flex gap-2">
-             <button onclick="editPoll(${poll.id})" class="cursor-pointer rounded-md"><i class="fas fa-edit mr-2 text-gray-600 hover:text-gray-400"></i></button>
+             <button onclick="editPoll(${poll.id})" data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="cursor-pointer rounded-md"><i class="fas fa-edit mr-2 text-gray-600 hover:text-gray-400"></i></button>
              <button onclick="deletePoll(${poll.id})" class="cursor-pointer rounded-md"><i class="fas fa-trash mr-2 text-red-600 hover:text-red-700"></i></button>
           </div>
        </div>
@@ -81,7 +83,76 @@ const deletePoll = (id) => {
     }
     const polls = pollsfromLS.filter(poll => poll.id !== id);
     localStorage.setItem("polls", JSON.stringify(polls));
-    window.location.reload();
+    location.reload();
+}
+
+const editPoll = (id) => {
+    const title = document.querySelector(".modal #title");
+    const description = document.querySelector(".modal #description");
+    let pollIdx = undefined;
+    const poll = pollsfromLS.find((poll, idx) => {
+        pollIdx = idx;
+        return poll.id == id;
+    });
+    title.value = poll.title;
+    description.value = poll.description;
+    console.log(poll);
+    console.log(pollIdx);
+    addOption();
+    addOption();
+    modal.addEventListener("submit", () => updatePoll(pollIdx));
+}
+
+let optionCount = 0;
+const pollOptionsContainer = document.getElementById("poll-options-container");
+
+const addOption = () => {
+    optionCount++;
+    const div = document.createElement("div");
+    div.className = "flex items-center";
+    div.innerHTML = `   <div
+                            class="border-1 border-gray-200 px-4 h-8 bg-gray-100 rounded-l-lg text-gray-500 text-sm flex justify-center items-center">
+                            <span>${optionCount}</span>
+                        </div>
+                        <input required type="text" placeholder="Option ${optionCount}"
+                            class="px-4 py-2 border-1 border-gray-200 rounded-lg w-full placeholder:text-sm placeholder:text-gray-400">
+                        <button
+                        onclick="deleteOption(this)"
+                            class="border-1 border-gray-200 cursor-pointer px-2 h-8 text-red-400  bg-red-50 hover:bg-red-100 rounded-r-lg  text-sm flex justify-center items-center">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    `;
+    pollOptionsContainer.appendChild(div);
+}
+
+const deleteOption = (btn) => {
+    if (optionCount === 2) {
+        notyf.error("Two options are necessary.");
+        return;
+    }
+    btn.parentElement.remove();
+    optionCount--;
+    for (let i = 0; i < pollOptionsContainer.children.length; i++) {
+        pollOptionsContainer.children[i].children[0].children[0].textContent = i + 1;
+        pollOptionsContainer.children[i].children[1].placeholder = `Option ${i + 1}`;
+    }
+}
+
+const updatePoll = (idx) => {
+    console.log(idx);
+    event.preventDefault();
+    const title = document.querySelector(".modal #title").value;
+    const description = document.querySelector(".modal #description").value;
+    const optionsInp = document.querySelectorAll("#poll-options-container input");
+    const options = [...optionsInp].map(inp => inp.value.trim());
+    const poll = pollsfromLS[idx];
+    debugger;
+    pollsfromLS[idx] = { ...poll, title, description, options: options, votes: [] };
+    console.log(pollsfromLS[idx]);
+    debugger;
+    localStorage.setItem("polls", JSON.stringify(pollsfromLS));
+    console.log(options);
+    location.reload();
 }
 
 const main = () => {
@@ -95,4 +166,5 @@ const main = () => {
     displayPolls();
 }
 
+addOptionBtn.addEventListener("click", addOption);
 main();
