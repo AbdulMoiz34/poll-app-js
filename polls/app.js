@@ -1,6 +1,6 @@
 const pollsContainer = document.querySelector(".polls-container");
 const polls = JSON.parse(localStorage.getItem("polls")) || [];
-const searchPolls = document.getElementById("search-polls");
+const searchPollInp = document.getElementById("search-poll-input");
 
 const time = (time) => {
     return time.slice(0, 4) + time.slice(4 + 3);
@@ -12,6 +12,7 @@ const formatLongDateUTC = dateStr => {
 }
 
 const displayPolls = (polls) => {
+    pollsContainer.innerHTML = "";
     for (let poll of polls) {
         pollsContainer.innerHTML += `<div class="mx-auto bg-white p-6 rounded-xl shadow-sm border border-gray-200 mt-4">
     <h2 class="text-xl font-semibold text-gray-800">${poll.title}</h2>
@@ -39,7 +40,7 @@ const displayPolls = (polls) => {
 }
 
 const searchPollsHandler = () => {
-    const searchTerm = searchPolls.value.trim().toLowerCase();
+    const searchTerm = searchPollInp.value.trim().toLowerCase();
     const filteredPolls = polls.filter(poll =>
         poll.description.toLowerCase().includes(searchTerm) ||
         poll.title.toLowerCase().includes(searchTerm) ||
@@ -49,10 +50,15 @@ const searchPollsHandler = () => {
 
 
 let timeout;
-searchPolls.addEventListener("input", () => {
+searchPollInp.addEventListener("input", () => {
     clearTimeout(timeout);
     timeout = setTimeout(() => {
-        displayPolls(searchPollsHandler());
+        const polls = searchPollsHandler();
+        if (!polls.length) {
+            pollsContainer.innerHTML = `<p class="text-center text-gray-500 mt-4">No polls found.</p>`;
+            return;
+        }
+        displayPolls(polls);
     }, 1000);
 });
 
