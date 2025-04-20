@@ -98,6 +98,7 @@ const editPoll = (id) => {
     title.value = poll.title;
     description.value = poll.description;
     pollOptionsContainer.innerHTML = "";
+    optionCount = 0;
     addOption();
     addOption();
     modal.addEventListener("submit", () => updatePoll(pollIdx));
